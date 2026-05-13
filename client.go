@@ -8,6 +8,7 @@ import (
   "fmt"
   "io"
   "net/http"
+  "net/url"
   "time"
 )
 
@@ -158,16 +159,9 @@ func (c *Client) Head(ctx context.Context, path string, body interface{}, params
 }
 
 func encodeParams(params map[string]string) string {
-  var buf bytes.Buffer
-  first := true
+  vals := url.Values{}
   for k, v := range params {
-    if !first {
-      buf.WriteByte('&')
-    }
-    buf.WriteString(k)
-    buf.WriteByte('=')
-    buf.WriteString(v)
-    first = false
+    vals.Set(k, v)
   }
-  return buf.String()
+  return vals.Encode()
 }

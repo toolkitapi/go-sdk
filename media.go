@@ -13,7 +13,7 @@ type Media struct {
 
 // NewMedia creates a new Media client.
 func NewMedia(apiKey string, opts ...Option) *Media {
-  return &Media{client: NewClient(apiKey, "media", opts...)}
+  return &Media{client: NewClient(apiKey, "youtube", opts...)}
 }
 
 // YoutubeTranscript Get YouTube video transcript

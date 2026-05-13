@@ -12,7 +12,7 @@ type Devtools struct {
 
 // NewDevtools creates a new Devtools client.
 func NewDevtools(apiKey string, opts ...Option) *Devtools {
-  return &Devtools{client: NewClient(apiKey, "devtools", opts...)}
+  return &Devtools{client: NewClient(apiKey, "dev", opts...)}
 }
 
 // JSONValidate Json Validate
