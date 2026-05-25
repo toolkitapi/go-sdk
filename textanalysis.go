@@ -37,7 +37,7 @@ func (s *Textanalysis) TextDiff(ctx context.Context, body interface{}) (interfac
 
 // Data Data Mask
 func (s *Textanalysis) Data(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/text/pii-mask", body, nil)
+  return s.client.Post(ctx, "v1/text/mask", body, nil)
 }
 
 // Profanity Profanity Filter
@@ -52,7 +52,7 @@ func (s *Textanalysis) Word(ctx context.Context, body interface{}) (interface{},
 
 // Detect Detect Language
 func (s *Textanalysis) Detect(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/text/language", body, nil)
+  return s.client.Post(ctx, "v1/text/detect-language", body, nil)
 }
 
 // Transliterate Transliterate Text

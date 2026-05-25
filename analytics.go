@@ -46,14 +46,19 @@ func (s *Analytics) Validate(ctx context.Context, body interface{}) (interface{}
   return s.client.Post(ctx, "v1/validate-chart", body, nil)
 }
 
-// Get Retrieve dataset schema
-func (s *Analytics) Get(ctx context.Context, datasetId string) (interface{}, error) {
+// GetSchema Retrieve dataset schema
+func (s *Analytics) GetSchema(ctx context.Context, datasetId string) (interface{}, error) {
   return s.client.Get(ctx, fmt.Sprintf("v1/datasets/%s/schema", datasetId), nil)
 }
 
 // Create Register a multi-source bundle for joins
 func (s *Analytics) Create(ctx context.Context, body interface{}) (interface{}, error) {
   return s.client.Post(ctx, "v1/datasets/bundle", body, nil)
+}
+
+// GetJobs Poll async job status
+func (s *Analytics) GetJobs(ctx context.Context, jobId string) (interface{}, error) {
+  return s.client.Get(ctx, fmt.Sprintf("v1/jobs/%s", jobId), nil)
 }
 
 // Status Service health check

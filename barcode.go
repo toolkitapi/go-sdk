@@ -15,19 +15,14 @@ func NewBarcode(apiKey string, opts ...Option) *Barcode {
   return &Barcode{client: NewClient(apiKey, "barcode", opts...)}
 }
 
-// QrGenerate Generate a styled QR code
-func (s *Barcode) QrGenerate(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/qr/generate", body, nil)
-}
-
-// QrGenerate1 Generate a QR code (raw image)
-func (s *Barcode) QrGenerate1(ctx context.Context, params map[string]string) (interface{}, error) {
+// QrGenerate Generate a QR code (raw image)
+func (s *Barcode) QrGenerate(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/qr/generate", params)
 }
 
-// QrDecode Decode QR code(s) from an image
-func (s *Barcode) QrDecode(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/qr/decode", body, nil)
+// QrDecode Decode QR code(s) from an image URL
+func (s *Barcode) QrDecode(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/qr/decode", params)
 }
 
 // QrBulk Bulk-generate QR codes
@@ -35,19 +30,14 @@ func (s *Barcode) QrBulk(ctx context.Context, body interface{}) (interface{}, er
   return s.client.Post(ctx, "v1/qr/bulk", body, nil)
 }
 
-// BarcodeGenerateGenerate Generate a barcode
-func (s *Barcode) BarcodeGenerateGenerate(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/barcode/generate", body, nil)
-}
-
-// BarcodeGenerateGenerate1 Generate a barcode (raw image)
-func (s *Barcode) BarcodeGenerateGenerate1(ctx context.Context, params map[string]string) (interface{}, error) {
+// BarcodeGenerate Generate a barcode (raw image)
+func (s *Barcode) BarcodeGenerate(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/barcode/generate", params)
 }
 
-// BarcodeDecode Decode barcode(s) from an image
-func (s *Barcode) BarcodeDecode(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/barcode/decode", body, nil)
+// BarcodeDecode Decode barcode(s) from an image URL
+func (s *Barcode) BarcodeDecode(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/barcode/decode", params)
 }
 
 // BarcodeBulk Bulk-generate barcodes

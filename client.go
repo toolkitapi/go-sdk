@@ -77,6 +77,39 @@ func (c *Client) doRequest(ctx context.Context, method, path string, body io.Rea
   return result, nil
 }
 
+// doRequestBytes sends an HTTP request and returns the raw response bytes.
+func (c *Client) doRequestBytes(ctx context.Context, method, path string, body io.Reader, contentType string) ([]byte, error) {
+  req, err := http.NewRequestWithContext(ctx, method, c.baseURL+"/"+path, body)
+  if err != nil {
+    return nil, fmt.Errorf("creating request: %w", err)
+  }
+  req.Header.Set("X-API-Key", c.apiKey)
+  if contentType != "" {
+    req.Header.Set("Content-Type", contentType)
+  }
+
+  resp, err := c.httpClient.Do(req)
+  if err != nil {
+    return nil, fmt.Errorf("sending request: %w", err)
+  }
+  defer resp.Body.Close()
+
+  bodyBytes, _ := io.ReadAll(resp.Body)
+  if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+    return nil, fmt.Errorf("HTTP %d: %s", resp.StatusCode, string(bodyBytes))
+  }
+  return bodyBytes, nil
+}
+
+// GetBytes sends a GET request and returns the raw response bytes.
+// Use this for endpoints that return binary data (e.g. file downloads).
+func (c *Client) GetBytes(ctx context.Context, path string, params map[string]string) ([]byte, error) {
+  if params != nil && len(params) > 0 {
+    path += "?" + encodeParams(params)
+  }
+  return c.doRequestBytes(ctx, http.MethodGet, path, nil, "")
+}
+
 func (c *Client) Get(ctx context.Context, path string, params map[string]string) (interface{}, error) {
   if params != nil && len(params) > 0 {
     path += "?" + encodeParams(params)

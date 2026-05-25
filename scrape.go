@@ -71,6 +71,11 @@ func (s *Scrape) ParseRobots(ctx context.Context, params map[string]string) (int
   return s.client.Get(ctx, "v1/scrape/robots", params)
 }
 
+// Map Discover URLs on a Domain
+func (s *Scrape) Map(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/scrape/map", params)
+}
+
 // Start Start Multi-Page Crawl
 func (s *Scrape) Start(ctx context.Context, body interface{}) (interface{}, error) {
   return s.client.Post(ctx, "v1/scrape/crawl", body, nil)

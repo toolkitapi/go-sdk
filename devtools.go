@@ -220,6 +220,41 @@ func (s *Devtools) MockSchema(ctx context.Context, body interface{}) (interface{
   return s.client.Post(ctx, "v1/mock-schema", body, nil)
 }
 
+// ConvertData Convert data format (JSON/CSV/XML/YAML/TOML)
+func (s *Devtools) ConvertData(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/convert/data", params)
+}
+
+// ConvertMarkup Convert markup format (Markdown / HTML / text)
+func (s *Devtools) ConvertMarkup(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/convert/markup", params)
+}
+
+// JSONToTypescript Generate TypeScript interfaces from JSON
+func (s *Devtools) JSONToTypescript(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/convert/json-to-typescript", body, nil)
+}
+
+// Vcard Parse vCard (.vcf) to JSON
+func (s *Devtools) Vcard(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/parse/vcard", body, nil)
+}
+
+// JSONGenerate Generate vCard (.vcf) from JSON contacts
+func (s *Devtools) JSONGenerate(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/parse/vcard/generate", body, nil)
+}
+
+// Ics Parse ICS calendar to JSON
+func (s *Devtools) Ics(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/parse/ics", body, nil)
+}
+
+// JSONGenerate1 Generate ICS calendar from JSON events
+func (s *Devtools) JSONGenerate1(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/parse/ics/generate", body, nil)
+}
+
 // Root Root
 func (s *Devtools) Root(ctx context.Context) (interface{}, error) {
   return s.client.Get(ctx, "", nil)

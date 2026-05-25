@@ -22,23 +22,23 @@ func (s *Pdf) Merge(ctx context.Context, body interface{}) (interface{}, error) 
 }
 
 // Split Split a PDF into parts
-func (s *Pdf) Split(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/split", body, nil)
+func (s *Pdf) Split(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/split", params)
 }
 
 // Rotate Rotate PDF pages
-func (s *Pdf) Rotate(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/rotate", body, nil)
+func (s *Pdf) Rotate(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/rotate", params)
 }
 
 // Compress Compress a PDF to reduce file size
-func (s *Pdf) Compress(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/compress", body, nil)
+func (s *Pdf) Compress(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/compress", params)
 }
 
 // Watermark Add a text watermark to PDF pages
-func (s *Pdf) Watermark(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/watermark", body, nil)
+func (s *Pdf) Watermark(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/watermark", params)
 }
 
 // Protect Encrypt or decrypt a PDF
@@ -57,8 +57,8 @@ func (s *Pdf) FromTemplate(ctx context.Context, body interface{}) (interface{}, 
 }
 
 // Text Extract text from a PDF
-func (s *Pdf) Text(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/text", body, nil)
+func (s *Pdf) Text(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/text", params)
 }
 
 // Metadata Read or update PDF metadata
@@ -67,8 +67,8 @@ func (s *Pdf) Metadata(ctx context.Context, body interface{}) (interface{}, erro
 }
 
 // Table Extract tables from a PDF
-func (s *Pdf) Table(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/table-extract", body, nil)
+func (s *Pdf) Table(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/table-extract", params)
 }
 
 // Form Read or fill PDF form fields
@@ -77,18 +77,23 @@ func (s *Pdf) Form(ctx context.Context, body interface{}) (interface{}, error) {
 }
 
 // Info Get structural information about a PDF
-func (s *Pdf) Info(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/info", body, nil)
+func (s *Pdf) Info(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/info", params)
 }
 
 // Ocr Extract text from scanned/image PDFs using OCR
-func (s *Pdf) Ocr(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/ocr", body, nil)
+func (s *Pdf) Ocr(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/ocr", params)
 }
 
 // To Render PDF pages as images
-func (s *Pdf) To(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/to-images", body, nil)
+func (s *Pdf) To(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/to-images", params)
+}
+
+// Convert Convert document via URL (file download)
+func (s *Pdf) Convert(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/pdf/convert/document", params)
 }
 
 // Download Download a processed file
