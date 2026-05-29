@@ -48,37 +48,37 @@ func (s *Webhook) Replay(ctx context.Context, binId string, requestId string, bo
 
 // Catch2 Catch and record an HTTP request
 func (s *Webhook) Catch2(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Head(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
+  return s.client.Get(ctx, fmt.Sprintf("v1/catch/%s", binId), nil)
 }
 
 // Catch21 Catch and record an HTTP request
 func (s *Webhook) Catch21(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Put(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
+  return s.client.Options(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
 }
 
 // Catch22 Catch and record an HTTP request
 func (s *Webhook) Catch22(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Get(ctx, fmt.Sprintf("v1/catch/%s", binId), nil)
+  return s.client.Head(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
 }
 
 // Catch23 Catch and record an HTTP request
 func (s *Webhook) Catch23(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Patch(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
+  return s.client.Post(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
 }
 
 // Catch24 Catch and record an HTTP request
 func (s *Webhook) Catch24(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Options(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
+  return s.client.Delete(ctx, fmt.Sprintf("v1/catch/%s", binId), nil)
 }
 
 // Catch25 Catch and record an HTTP request
 func (s *Webhook) Catch25(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Delete(ctx, fmt.Sprintf("v1/catch/%s", binId), nil)
+  return s.client.Patch(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
 }
 
 // Catch26 Catch and record an HTTP request
 func (s *Webhook) Catch26(ctx context.Context, binId string) (interface{}, error) {
-  return s.client.Post(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
+  return s.client.Put(ctx, fmt.Sprintf("v1/catch/%s", binId), nil, nil)
 }
 
 // CreateMocks Create a mock endpoint
@@ -98,37 +98,37 @@ func (s *Webhook) DeleteMocks(ctx context.Context, mockId string) (interface{}, 
 
 // HitMock Hit a mock endpoint
 func (s *Webhook) HitMock(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Head(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
+  return s.client.Get(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil)
 }
 
 // HitMock1 Hit a mock endpoint
 func (s *Webhook) HitMock1(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Put(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
+  return s.client.Options(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
 }
 
 // HitMock2 Hit a mock endpoint
 func (s *Webhook) HitMock2(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Get(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil)
+  return s.client.Head(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
 }
 
 // HitMock3 Hit a mock endpoint
 func (s *Webhook) HitMock3(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Patch(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
+  return s.client.Post(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
 }
 
 // HitMock4 Hit a mock endpoint
 func (s *Webhook) HitMock4(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Options(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
+  return s.client.Delete(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil)
 }
 
 // HitMock5 Hit a mock endpoint
 func (s *Webhook) HitMock5(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Delete(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil)
+  return s.client.Patch(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
 }
 
 // HitMock6 Hit a mock endpoint
 func (s *Webhook) HitMock6(ctx context.Context, mockId string) (interface{}, error) {
-  return s.client.Post(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
+  return s.client.Put(ctx, fmt.Sprintf("v1/mock/%s", mockId), nil, nil)
 }
 
 // Root Root
