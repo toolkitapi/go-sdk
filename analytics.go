@@ -61,7 +61,7 @@ func (s *Analytics) GetJobs(ctx context.Context, jobId string) (interface{}, err
   return s.client.Get(ctx, fmt.Sprintf("v1/jobs/%s", jobId), nil)
 }
 
-// Status Service health check
+// Status Status Check
 func (s *Analytics) Status(ctx context.Context) (interface{}, error) {
   return s.client.Get(ctx, "v1/status", nil)
 }

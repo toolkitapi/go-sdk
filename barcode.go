@@ -15,21 +15,6 @@ func NewBarcode(apiKey string, opts ...Option) *Barcode {
   return &Barcode{client: NewClient(apiKey, "barcode", opts...)}
 }
 
-// QrGenerate Generate a QR code (raw image)
-func (s *Barcode) QrGenerate(ctx context.Context, params map[string]string) (interface{}, error) {
-  return s.client.Get(ctx, "v1/qr/generate", params)
-}
-
-// QrDecode Decode QR code(s) from an image URL
-func (s *Barcode) QrDecode(ctx context.Context, params map[string]string) (interface{}, error) {
-  return s.client.Get(ctx, "v1/qr/decode", params)
-}
-
-// QrBulk Bulk-generate QR codes
-func (s *Barcode) QrBulk(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/qr/bulk", body, nil)
-}
-
 // BarcodeGenerate Generate a barcode (raw image)
 func (s *Barcode) BarcodeGenerate(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/barcode/generate", params)
@@ -48,6 +33,21 @@ func (s *Barcode) BarcodeBulk(ctx context.Context, body interface{}) (interface{
 // BarcodeTypes List supported barcode types
 func (s *Barcode) BarcodeTypes(ctx context.Context) (interface{}, error) {
   return s.client.Get(ctx, "v1/barcode/types", nil)
+}
+
+// QrGenerate Generate a QR code (raw image)
+func (s *Barcode) QrGenerate(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/qr/generate", params)
+}
+
+// QrDecode Decode QR code(s) from an image URL
+func (s *Barcode) QrDecode(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/qr/decode", params)
+}
+
+// QrBulk Bulk-generate QR codes
+func (s *Barcode) QrBulk(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/qr/bulk", body, nil)
 }
 
 // Root Root

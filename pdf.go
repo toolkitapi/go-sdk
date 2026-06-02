@@ -51,11 +51,6 @@ func (s *Pdf) FromImages(ctx context.Context, body interface{}) (interface{}, er
   return s.client.Post(ctx, "v1/pdf/from-images", body, nil)
 }
 
-// FromTemplate Generate PDF from a Liquid template
-func (s *Pdf) FromTemplate(ctx context.Context, body interface{}) (interface{}, error) {
-  return s.client.Post(ctx, "v1/pdf/from-template", body, nil)
-}
-
 // Text Extract text from a PDF
 func (s *Pdf) Text(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/pdf/text", params)
@@ -84,6 +79,11 @@ func (s *Pdf) Info(ctx context.Context, params map[string]string) (interface{}, 
 // Ocr Extract text from scanned/image PDFs using OCR
 func (s *Pdf) Ocr(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/pdf/ocr", params)
+}
+
+// FromTemplate Generate PDF from a Liquid template
+func (s *Pdf) FromTemplate(ctx context.Context, body interface{}) (interface{}, error) {
+  return s.client.Post(ctx, "v1/pdf/from-template", body, nil)
 }
 
 // To Render PDF pages as images

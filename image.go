@@ -16,6 +16,11 @@ func NewImage(apiKey string, opts ...Option) *Image {
   return &Image{client: NewClient(apiKey, "image", opts...)}
 }
 
+// ImageFavicon Fetch highest-resolution favicon
+func (s *Image) ImageFavicon(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/image/favicon", params)
+}
+
 // ImageResize Resize an image
 func (s *Image) ImageResize(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/image/resize", params)
@@ -146,11 +151,6 @@ func (s *Image) ImageExtractColorsColors1(ctx context.Context, params map[string
   return s.client.Get(ctx, "v1/image/extract/colors", params)
 }
 
-// ImageFavicon Fetch highest-resolution favicon
-func (s *Image) ImageFavicon(ctx context.Context, params map[string]string) (interface{}, error) {
-  return s.client.Get(ctx, "v1/image/favicon", params)
-}
-
 // Download Download a processed image
 func (s *Image) Download(ctx context.Context, objectName string) (interface{}, error) {
   return s.client.Get(ctx, fmt.Sprintf("v1/image/download/%s", objectName), nil)
@@ -166,16 +166,6 @@ func (s *Image) ImageFromTemplate(ctx context.Context, body interface{}) (interf
   return s.client.Post(ctx, "v1/image/from-template", body, nil)
 }
 
-// List List pre-built image templates
-func (s *Image) List(ctx context.Context, params map[string]string) (interface{}, error) {
-  return s.client.Get(ctx, "v1/image/templates", params)
-}
-
-// Get Get a single image template
-func (s *Image) Get(ctx context.Context, templateId string) (interface{}, error) {
-  return s.client.Get(ctx, fmt.Sprintf("v1/image/templates/%s", templateId), nil)
-}
-
 // Convert2 Convert between image formats
 func (s *Image) Convert2(ctx context.Context, body interface{}) (interface{}, error) {
   return s.client.Post(ctx, "v1/image/convert", body, nil)
@@ -184,6 +174,16 @@ func (s *Image) Convert2(ctx context.Context, body interface{}) (interface{}, er
 // Convert21 Convert image via URL (file download)
 func (s *Image) Convert21(ctx context.Context, params map[string]string) (interface{}, error) {
   return s.client.Get(ctx, "v1/image/convert", params)
+}
+
+// List List pre-built image templates
+func (s *Image) List(ctx context.Context, params map[string]string) (interface{}, error) {
+  return s.client.Get(ctx, "v1/image/templates", params)
+}
+
+// Get Get a single image template
+func (s *Image) Get(ctx context.Context, templateId string) (interface{}, error) {
+  return s.client.Get(ctx, fmt.Sprintf("v1/image/templates/%s", templateId), nil)
 }
 
 // Root Root
